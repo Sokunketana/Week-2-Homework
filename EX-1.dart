@@ -1,4 +1,12 @@
-enum Skill { FLUTTER, DART, OTHER }
+enum Skill { 
+  FLUTTER(5000), 
+  DART(3000), 
+  OTHER(1000);
+
+  final int bonus;
+
+  Skill(this.bonus);
+  }
 
 class Address {
   final String _street;
@@ -35,13 +43,14 @@ class Employee {
     salary += _yearsOfExperience * 2000;
 
     for (Skill skill in _skills) {
-      if (skill == Skill.FLUTTER) {
-        salary += 5000;
-      } else if (skill == Skill.DART) {
-        salary += 3000;
-      } else if (skill == Skill.OTHER) {
-        salary += 1000;
-      }
+      salary += skill.bonus;
+      // if (skill == Skill.FLUTTER) {
+      //   salary += 5000;
+      // } else if (skill == Skill.DART) {
+      //   salary += 3000;
+      // } else if (skill == Skill.OTHER) {
+      //   salary += 1000;
+      // }
     }
 
     return salary;
