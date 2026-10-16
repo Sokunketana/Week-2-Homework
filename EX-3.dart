@@ -1,7 +1,9 @@
 class MyDuration {
   int _milliseconds = 0;
 
-  MyDuration(this._milliseconds);
+  MyDuration(this._milliseconds) {
+    if (_milliseconds < 0) throw Exception("Time cannot be negative");
+  }
 
   MyDuration operator +(MyDuration other) => MyDuration(_milliseconds + other._milliseconds);
   MyDuration operator -(MyDuration other) {
@@ -13,11 +15,11 @@ class MyDuration {
   bool operator >(MyDuration other) => _milliseconds > other._milliseconds;
 
   MyDuration.fromHours(int hours) {
-    if (hours < 0) throw Exception("Time cannot be negative");
+    // if (hours < 0) throw Exception("Time cannot be negative");
     _milliseconds += hours * 60 * 60 * 1000;
   }
   MyDuration.fromMinutes(int minutes) {
-    if (minutes < 0) throw Exception("Time cannot be negative");
+    // if (minutes < 0) throw Exception("Time cannot be negative");
     _milliseconds += minutes * 60 * 1000;
   }
   MyDuration.fromSeconds(int seconds) {
